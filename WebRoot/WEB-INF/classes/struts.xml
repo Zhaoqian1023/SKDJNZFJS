@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.action.extension" value="do,action,,"></constant>
+
+	<package name="default" namespace="/" extends="struts-default">
+		<global-results>
+			<result name="error">/404.jsp</result>
+		</global-results>
+		<global-exception-mappings>  
+			<exception-mapping exception="java.sql.SQLException" result="error"/>  
+			<exception-mapping exception="java.lang.Exception" result="error"/> 
+		</global-exception-mappings>
+		
+		<action name="*_*" class="{1}Action" method="{2}">
+			<result name="Input_Success" >${page}.jsp </result>
+			<result name="Print_Success" >${page}.jsp </result>
+			<result name="Manager_Success" >${page}.jsp </result>
+			
+			<result name="Input_Redirect" type="redirect" >/${page}.jsp </result>
+			<result name="Print_Redirect" type="redirect" >/${page}.jsp </result>
+			<result name="Manager_Redirect" type="redirect" >/manager/${page}.jsp </result>
+		</action>
+
+	</package>
+</struts>

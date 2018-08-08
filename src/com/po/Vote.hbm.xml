@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.po">
+
+	<class name="Vote" table="t_vote">
+	    <id name="vId" column="Vid" type="integer">
+	    	<generator class="native"></generator>
+	    </id>
+		<property name="gZzz" column="Gzzz" type="integer" length="2"></property>
+		<property name="gZcx" column="Gzcx" type="integer" length="2"></property>
+		<property name="zCnl" column="Zcnl" type="integer" length="2"></property>
+		<property name="xTgt" column="Xtgt" type="integer" length="2"></property>
+		<property name="gZjl" column="Gzjl" type="integer" length="2"></property>
+		<property name="gZln" column="Gzln" type="integer" length="2"></property>
+		<property name="type" column="Type" type="string" length="1"></property>
+		<property name="time" column="Time" type="string" length="20"></property>
+		<many-to-one name="dept" column="department_Did" class="Department"></many-to-one>
+		<many-to-one name="user" column="user_Uid" class="User"></many-to-one>
+		<property name="logsTime" column="Logstime" type="string" length="25"></property>
+	</class>
+	
+</hibernate-mapping>
